@@ -1,0 +1,6 @@
+// Install utilities for mysql 5
+docker exec -i mysql-db sh -c 'yum remove mysql-connector-python -y'
+docker exec -i mysql-db sh -c 'rpm -Uvh http://repo.mysql.com/yum/mysql-connectors-community/el/7/x86_64/mysql-connector-python-2.1.8-1.el7.x86_64.rpm'
+docker exec -i mysql-db sh -c 'yum install -y mysql-utilities'
+...
+docker exec -i mysql-db sh -c 'exec mysqldbcopy --source=user:pw@localhost --destination=user:pw@localhost source:target'
